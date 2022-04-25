@@ -53,6 +53,7 @@
 .rounded-btn
   border-radius: 10px
   padding: 4px 7px
+  
 
 .partners
   width: 80%
