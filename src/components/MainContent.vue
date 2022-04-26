@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-layout row no-gutters class="main-content hidden-sm-and-down">
+    <div class="main-content hidden-sm-and-down">
       <div class="welcome-text">
         <div>
           <div class="remote-work mb-10">
@@ -13,7 +13,7 @@
             watch productivity soar.
           </div>
           <div class="learn-more">
-            <v-btn dark class="rounded-btn">Learn more</v-btn>
+            <button type="button" class="rounded-btn">Learn more</button>
           </div>
         </div>
 
@@ -27,15 +27,15 @@
       <div class="hero-image">
         <img
           class="image"
+          height="100%"
           :src="require('../assets/images/image-hero-desktop.png')"
         />
       </div>
-    </v-layout>
-    <div class="hidden-md-and-up" style="width: 100%">
+    </div>
+    <div class="hidden-md-and-up">
       <div class="text-center">
         <img
           width="100%"
-          height="500px"
           :src="require('../assets/images/image-hero-desktop.png')"
         />
         <div class="px-3">
@@ -48,7 +48,7 @@
             watch productivity soar.
           </div>
           <div class="learn-more">
-            <v-btn dark class="rounded-btn">Learn more</v-btn>
+            <button type="button" class="rounded-btn">Learn More</button>
           </div>
 
           <div class="d-flex justify-space-between mt-8 mb-13">
@@ -65,7 +65,8 @@
 
 <style scoped lang="sass">
 .main-content
-  padding: 5rem 10rem
+  width: 70%
+  margin: auto
   display: flex
   justify-content: space-between
 
@@ -81,19 +82,25 @@
   width: 40%
 
 .image
-  width: 80%
+  width: 100%
   object-fit: contain
 
 .rounded-btn
+  background-color: black
+  color: white
+  border-radius: 15px
+  padding: 15px 30px
+
+.rounded-btn:hover,
+.rounded-btn:active
+  color: black
+  border: 1px solid black
+  background-color: white
   border-radius: 10px
-  padding: 4px 7px
 
 
 .partners
   width: 80%
   position: absolute
   bottom: 0
-
-  // position: relative
-  // bottom: -30%
 </style>

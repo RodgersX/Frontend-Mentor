@@ -1,13 +1,13 @@
 <template>
-  <v-app id="app">
-    <v-app-bar
-      width="100%"
+  <v-app class="app">
+    <v-toolbar
       color="white"
       flat
       app
       class="app-bar text-center pa-0"
+      style="z-index: 1"
     >
-      <p class="title mb-0">Snap</p>
+      <v-toolbar-title class="title">Snap</v-toolbar-title>
       <div class="nav-tags hidden-sm-and-down">
         <ul>
           <div class="dropdown">
@@ -63,27 +63,30 @@
       </div>
 
       <v-app-bar-nav-icon
-        @click.stop="drawer = !drawer"
+        @click.stop="drawer = true"
         class="hidden-md-and-up"
       />
-    </v-app-bar>
+    </v-toolbar>
 
-    <v-navigation-drawer v-model="drawer" absolute right temporary>
-      <div style="position: relative" class="pt-3">
-        <v-btn
-          style="position: absolute; right: 20px"
-          icon
-          right
-          @click.stop="drawer = false"
-        >
-          <i class="bx bx-x bx-lg bx-spin-hover" />
-        </v-btn>
-      </div>
+    <v-navigation-drawer v-model="drawer" right absolute app temporary>
+      <template v-slot:prepend>
+        <div style="position: relative" class="pt-3">
+          <v-btn
+            style="position: absolute; right: 20px"
+            icon
+            right
+            @click.stop="drawer = false"
+          >
+            <i class="bx bx-x bx-lg bx-spin-hover" />
+          </v-btn>
+        </div>
+      </template>
+
       <nav-bar-contents :ex-company="exCompany" :ex-feature="exFeature">
       </nav-bar-contents>
     </v-navigation-drawer>
 
-    <v-main class="" style="width: 500rem">
+    <v-main>
       <main-contents />
     </v-main>
   </v-app>
@@ -127,10 +130,10 @@ export default {
 </script>
 
 <style scoped lang="sass">
-#app
+
+.app
   font-size: 18px
   font-family: 'Epilogue', sans-serif
-  // position: relative
 
 .app-bar
   padding: 1rem 2rem
@@ -143,13 +146,16 @@ export default {
   display: flex
   align-items: center
 
-
 .nav-tags ul li
   display: inline-block
   margin: 0 30px
   display: flex
   align-items: center
   cursor: pointer
+
+.nav-tags ul li:hover,
+.nav-tags ul li:active
+  color: grey
 
 .auth-div
   margin-left: auto
