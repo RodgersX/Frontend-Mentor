@@ -1,8 +1,14 @@
 <template>
   <v-app id="app">
-    <v-app-bar app color="white" flat class="app-bar">
-      <p class="title">Snap</p>
-      <div class="nav-tags">
+    <v-app-bar
+      width="100%"
+      color="white"
+      flat
+      app
+      class="app-bar text-center pa-0"
+    >
+      <p class="title mb-0">Snap</p>
+      <div class="nav-tags hidden-sm-and-down">
         <ul>
           <div class="dropdown">
             <li>
@@ -50,13 +56,30 @@
           <li>About</li>
         </ul>
       </div>
-      <div class="auth-div">
+      <div class="auth-div hidden-sm-and-down">
         <v-btn text class="mr-5">Login</v-btn>
         <v-btn outlined>Register</v-btn>
       </div>
+      <v-spacer />
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
     </v-app-bar>
 
-    <v-main class="mt-10">
+    <v-navigation-drawer v-model="drawer" absolute right temporary>
+      <div style="position: relative" class="pt-3">
+        <v-btn
+          style="position: absolute; right: 20px"
+          icon
+          right
+          @click.stop="drawer = false"
+        >
+          <i class="bx bx-x bx-lg bx-spin-hover" />
+        </v-btn>
+      </div>
+      <nav-bar-contents :ex-company="exCompany" :ex-feature="exFeature">
+      </nav-bar-contents>
+    </v-navigation-drawer>
+
+    <v-main class="" style="width: 500rem">
       <main-contents />
     </v-main>
   </v-app>
@@ -70,10 +93,14 @@ export default {
 
   components: {
     "main-contents": MainContent,
+    "nav-bar-contents": require("./components/NavDrawerComponents.vue").default,
   },
 
   data() {
     return {
+      drawer: false,
+      exFeature: false,
+      exCompany: false,
       features: [
         {
           icon: "bx bxs-calendar-minus",
@@ -99,6 +126,7 @@ export default {
 #app
   font-size: 18px
   font-family: 'Epilogue', sans-serif
+  // position: relative
 
 .app-bar
   padding: 1rem 2rem
@@ -150,6 +178,8 @@ export default {
 .dropdown:hover .icon-down,
 .dropdown .icon-up
   display: none
+
+nav-drawer
 
 .dropdown:hover .icon-up
   display: inline
