@@ -56,12 +56,16 @@
           <li>About</li>
         </ul>
       </div>
+      <v-spacer />
       <div class="auth-div hidden-sm-and-down">
         <v-btn text class="mr-5">Login</v-btn>
         <v-btn outlined>Register</v-btn>
       </div>
-      <v-spacer />
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+
+      <v-app-bar-nav-icon
+        @click.stop="drawer = !drawer"
+        class="hidden-md-and-up"
+      />
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" absolute right temporary>
@@ -178,8 +182,6 @@ export default {
 .dropdown:hover .icon-down,
 .dropdown .icon-up
   display: none
-
-nav-drawer
 
 .dropdown:hover .icon-up
   display: inline
